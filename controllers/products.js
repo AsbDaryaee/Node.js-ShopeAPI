@@ -1,20 +1,5 @@
 const Product = require("../models/product");
 
-// ************ SANDBOX *************
-
-const getAllProductsStatic = async (req, res) => {
-  const allProducts = await Product.find({ price: { $gt: 100 } })
-    .select("name  price")
-    .sort("-price");
-
-  res.status(200).json({
-    message: "Successful",
-    count: allProducts.length,
-    Products: allProducts,
-  });
-};
-
-// ************ MAIN *************
 
 const getAllProducts = async (req, res) => {
   const { featured, company, name, sort, select, limit, filter } = req.query;
